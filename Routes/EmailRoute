@@ -2,7 +2,7 @@ const express = require("express");
 const emailRouter = express.Router();
 const emailCtrl = require("../Controllers/sendEmail");
 
-emailRouter.use((req, res, next) => {
+/* emailRouter.use((req, res, next) => {
   var allowedDomains =
     process.env.NODE_ENV == "DEVELOPMENT"
       ? "http://localhost:3000"
@@ -12,7 +12,7 @@ emailRouter.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", origin);
   }
   next();
-});
+}); */
 emailRouter.post("/", emailCtrl.sendEmail);
 
 module.exports = emailRouter;
