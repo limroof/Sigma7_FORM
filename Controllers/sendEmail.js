@@ -22,16 +22,43 @@ exports.sendEmail = (req, res) => {
     html:
       "<h1>Confirmation de réception</h1><p>Ceci est un courriel pour vous confimer que nous avons bien reçu votre message</p><p><strong>Voici les informations fournis :</strong><br/><strong>Nom : " +
       req.body.name +
-      "</strong></br><strong>Numéro : " +
+      "</strong><br><strong>Numéro : " +
       req.body.telephone +
-      "</strong></br><strong>E-mail : " +
+      "</strong><br><strong>E-mail : " +
       req.body.email +
-      "</strong></br><strong>message : " +
+      "</strong><br><strong>message : " +
       req.body.message +
-      "</strong></br></p>",
+      "</strong><br></p>",
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      res.status(500).send({ ok: false });
+    } else {
+      res.status(201).send({ ok: true });
+    }
+  });
+
+  var mailAdmin = {
+    from: process.env.EMAIL_FROM,
+    to: process.env.EMAIL_FROM,
+    subject: "Nouveau message de Sigma7",
+    text: req.body.message,
+    html:
+      "<h1>Nouveau message pour Sigma7</h1><p><strong>Voici les informations fournis :</strong></p><strong>Nom : </strong>" +
+      req.body.name +
+      "<br><strong>Numéro : </strong>" +
+      req.body.telephone +
+      "<br><strong>E-mail : </strong>" +
+      req.body.email +
+      "<br><strong>message : </strong>" +
+      req.body.message +
+      "</p>",
+  };
+
+  console.log(req.body);
+  transporter.sendMail(mailAdmin, function (error, info) {
     if (error) {
       console.log(error);
       res.status(500).send({ ok: false });
