@@ -57,7 +57,6 @@ exports.sendEmail = (req, res) => {
       "</p>",
   };
 
-  console.log(req.body);
   transporter.sendMail(mailAdmin, function (error, info) {
     if (error) {
       console.log(error);
