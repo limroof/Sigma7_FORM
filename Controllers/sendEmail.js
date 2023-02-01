@@ -17,7 +17,7 @@ exports.sendEmail = (req, res) => {
   var mailOptions = {
     from: process.env.EMAIL_FROM,
     to: req.body.email,
-    subject: "Sending Email using Node.js",
+    subject: "Confirmation de message",
     text: req.body.message,
     html:
       "<h1>Confirmation de réception</h1><p>Ceci est un courriel pour vous confimer que nous avons bien reçu votre message</p><p><strong>Voici les informations fournis :</strong><br/><strong>Nom : " +
@@ -43,7 +43,7 @@ exports.sendEmail = (req, res) => {
   var mailAdmin = {
     from: process.env.EMAIL_FROM,
     to: process.env.EMAIL_FROM,
-    subject: "Nouveau message de Sigma7",
+    subject: "Nouveau message pour Sigma7",
     text: req.body.message,
     html:
       "<h1>Nouveau message pour Sigma7</h1><p><strong>Voici les informations fournis :</strong></p><strong>Nom : </strong>" +
