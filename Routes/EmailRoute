@@ -3,7 +3,8 @@ const emailRouter = express.Router();
 const emailCtrl = require("../Controllers/sendEmail");
 
 emailRouter.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:8888");
+  var allowedDomains = ["http://localhost:3001", "http://localhost:8080"];
+  res.setHeader("Access-Control-Allow-Origin", allowedDomains);
   next();
 });
 emailRouter.post("/", emailCtrl.sendEmail);
