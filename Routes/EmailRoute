@@ -3,7 +3,10 @@ const emailRouter = express.Router();
 const emailCtrl = require("../Controllers/sendEmail");
 
 emailRouter.use((req, res, next) => {
-  var allowedDomains = ["http://localhost:3001", "http://localhost:8080"];
+  var allowedDomains =
+    process.env.NODE_ENV == "DEVELOPMENT"
+      ? "http://localhost:3000"
+      : ["https://sigma7.online,https://sigma7.ma"];
   var origin = req.headers.origin;
   if (allowedDomains.indexOf(origin) > -1) {
     res.setHeader("Access-Control-Allow-Origin", origin);
