@@ -17,7 +17,6 @@ app.use(
   })
 );
 app.use(bodyParser.json());
-/* app.use(express.urlencoded()); */
 
 app.use("/send", sendEmailRouter);
 
