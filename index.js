@@ -13,7 +13,7 @@ app.use(
     origin:
       process.env.NODE_ENV == "DEVELOPMENT"
         ? "http://localhost:3000"
-        : ["https://sigma7.online,https://sigma7.ma"],
+        : ["https://sigma7.online", "https://sigma7.ma"],
   })
 );
 app.use(bodyParser.json());
