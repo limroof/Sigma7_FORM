@@ -46,7 +46,7 @@ exports.sendEmail = (req, res) => {
     subject: "Nouveau message pour Sigma7",
     text: req.body.message,
     html:
-      "<h1>Nouveau message pour Sigma7</h1><p><strong>Voici les informations fournis :</strong></p><strong>Nom : </strong>" +
+      "<h1>Nouveau message pour Sigma7</h1><p><strong>Voici les informations fournies :</strong></p><strong>Nom : </strong>" +
       req.body.name +
       "<br><strong>Numéro : </strong>" +
       req.body.telephone +
